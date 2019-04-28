@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Chemistry</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="Font/stylesheet.css">
+
+</head>
+
+<style>
+  .white {
+    background-color: white;
+  }
+
+  #mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #d3d3d3;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
+
+</style>
+
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Learn Chemistry</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        
+      </div>
+    </div>
+  </nav>
+
+  <div class="row">
+      <div class="col-md-4" align="center">
+          <a class="btn btn-success btn-lg" href="index.html">Main Menu</a>
+      </div>
+
+      <div class="col-md-4">
+          <h1 align="center" class="alert alert-success">Activity</h1>
+      </div>
+
+      <div class="col-md-4" align="center">
+          <a class="btn btn-info btn-lg" href="lesson2.html">Next</a>
+      </div>
+      
+  </div>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <div class="white">
+            <div class="card">
+              <div class="card-body">
+                  <p class="alert alert-success">Drag the atom image to the object</p>
+                  
+
+                              <hr>
+                               <p class="alert alert-warning">Direction: Make a representation of the arrangement, relative spacing, and relative motion of the particles in:</p>
+                                
+                                <div class="row">
+                                  <div class="col-md-4">
+
+                                      <div id="mydiv">
+                                                  <img class="img-responsive" src="img/2.gif" height="100" width="100"/>
+                                                  
+                                       </div>
+
+                                  </div>
+                                  <div class="col-md-8">
+                                     
+                                     <img class="img-responsive" src="img/materials2/1.png" height="200" width="200"/>
+                                     <img class="img-responsive" src="img/materials2/2.png" height="200" width="100"/>
+                                     <img class="img-responsive" src="img/materials2/3.png" height="200" width="200"/>
+                                     <hr>
+
+
+                                             
+
+
+                                  </div>
+                              </div>  
+
+
+              </div>
+            </div>
+        </div>
+        </div>
+    </div>
+  </div>
+
+  <script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("mydiv"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+                        $(document).ready(function(){
+                          $('[data-toggle="tooltip"]').tooltip();   
+                        });
+                        </script>
+
+</body>
+
+</html>
